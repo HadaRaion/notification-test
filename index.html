@@ -41,8 +41,10 @@
 		<script>
 			let permission = Notification.permission;
 
+			console.log('permission', first);
+
 			if (permission === 'default') {
-				requestAndShowPermission();
+				requestPermission();
 			} else if (permission === 'denied') {
 				alert('알림표시 권한이 허용되지 않았습니다.');
 			}
