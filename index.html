@@ -37,24 +37,31 @@
 	<body>
 		<h1>재난정보서비스 테스트</h1>
 		<p>알림표시 권한을 허용 후 버튼을 클릭해주세요. <br />5초 후 알림이 갑니다.</p>
-		<button onclick="showNotification()">푸시알림 보내기</button>
-		<button class="requst" onclick="requestPermission()">Request permission</button>
-		<button class="check" onclick="checkStatus()">Check the status</button>
+		<button class="send">푸시알림 보내기</button>
+		<button class="request">Request permission</button>
+		<button class="check">Check the status</button>
 		<p class="status"></p>
 		<script>
+			let permission = Notification.permission;
 			if (permission === 'default') {
 				Notification.requestPermission();
 			} else if (permission === 'denied') {
 				alert('알림표시 권한이 허용되지 않았습니다.');
+			} else {
+				console.log('Working well', permission);
 			}
+
+			const sendBtn = document.querySelector('.send');
+			const requestBtn = document.querySelector('.request');
+			const checkBtn = document.querySelector('.check');
+
+			sendBtn.addEventListener('click', showNotification);
+			requestBtn.addEventListener('click', () => Notification.requestPermission());
+			checkBtn.addEventListener('click', checkStatus);
 
 			function checkStatus() {
 				const permissionStatus = Notification.permission;
 				document.querySelector('.status').innerHTML = permissionStatus;
-			}
-
-			function requestPermission() {
-				Notification.requestPermission();
 			}
 
 			function showNotification() {
