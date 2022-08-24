@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -48,20 +48,24 @@
 			} else if (permission === 'denied') {
 				alert('알림표시 권한이 허용되지 않았습니다.');
 			} else {
-				console.log('Working well', permission);
+				showNotification()
 			}
 
 			const sendBtn = document.querySelector('.send');
 			const requestBtn = document.querySelector('.request');
 			const checkBtn = document.querySelector('.check');
 
-			sendBtn.addEventListener('click', showNotification);
+			sendBtn.addEventListener('click', showNotificationLater);
 			requestBtn.addEventListener('click', () => Notification.requestPermission());
 			checkBtn.addEventListener('click', checkStatus);
 
 			function checkStatus() {
 				const permissionStatus = Notification.permission;
 				document.querySelector('.status').innerHTML = permissionStatus;
+			}
+
+			function showNotificationLater() {
+					setTimeout(showNotification, 3000);
 			}
 
 			function showNotification() {
@@ -72,15 +76,12 @@
 				const body =
 					'푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요. 푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요. 푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요.';
 
-				setTimeout(() => {
-					const notification = new Notification(title, { body, icon, image, vibrate: true });
-
-					notification.onclick = e => {
-						notification.close();
-						window.location.href = './service.html';
-					};
-				}, 0);
-			}
+        const notification = new Notification(title, { body, icon, image, vibrate: true });
+        notification.onclick = e => {
+          notification.close();
+          window.location.href = './service.html';
+				};
+      }
 		</script>
 	</body>
 </html>
