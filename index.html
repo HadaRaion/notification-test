@@ -44,9 +44,11 @@
 			console.log('permission', permission);
 
 			if (permission === 'default') {
-				requestPermission();
+				Notification.requestPermission();
 			} else if (permission === 'denied') {
 				alert('알림표시 권한이 허용되지 않았습니다.');
+			} else {
+				console.log(permission);
 			}
 
 			function showNotification() {
