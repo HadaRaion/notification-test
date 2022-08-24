@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="500" viewBox="0 0 1000 500">
+  <defs>
+    <clipPath id="clip-image">
+      <rect width="1000" height="500"/>
+    </clipPath>
+  </defs>
+  <g id="image" clip-path="url(#clip-image)">
+    <rect width="1000" height="500" fill="#fff"/>
+    <rect id="사각형_1510" data-name="사각형 1510" width="1000" height="500" fill="#fc0"/>
+    <text id="모바일_재난_예보" data-name="모바일 재난 예보" transform="translate(506 185)" fill="#2d2d2d" font-size="50" font-family="GmarketSansBold, Gmarket Sans"><tspan x="-182.35" y="0">모바일 재난 예보</tspan></text>
+    <text id="재난_발생_알림" data-name="재난 발생 알림" transform="translate(515 334)" fill="#910004" font-size="120" font-family="GmarketSansBold, Gmarket Sans"><tspan x="-379.92" y="0">재난 발생 알림</tspan></text>
+  </g>
+</svg>

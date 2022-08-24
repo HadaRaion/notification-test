@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5" />
+		<meta name="msapplication-TileColor" content="#da532c" />
+		<meta name="theme-color" content="#ffffff" />
+
+		<title>Notification</title>
+		<style>
+			body {
+				width: 100vw;
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				background-color: black;
+				color: white;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+
+			button {
+				margin-top: 3rem;
+				padding: 0.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>재난정보서비스 테스트</h1>
+		<p>알림표시 권한을 허용 후 버튼을 클릭해주세요. <br />5초 후 알림이 갑니다.</p>
+		<button onclick="showNotification()">푸시알림 보내기</button>
+		<script>
+			let permission = Notification.permission;
+
+			if (permission === 'default') {
+				requestAndShowPermission();
+			} else if (permission === 'denied') {
+				alert('알림표시 권한이 허용되지 않았습니다.');
+			}
+
+			function showNotification() {
+				const title = '재난정보서비스';
+				const icon = './images/icon.png';
+				const badge = 'https://i.imgur.com/9QFB20F.png';
+				const image = './images/image.svg';
+				const body =
+					'푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요. 푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요. 푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요.';
+
+				setTimeout(() => {
+					const notification = new Notification(title, { body, icon, image, vibrate: true });
+
+					notification.onclick = e => {
+						notification.close();
+						window.location.href = './service.html';
+					};
+				}, 100);
+			}
+		</script>
+	</body>
+</html>
