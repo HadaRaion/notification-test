@@ -36,52 +36,10 @@
 	</head>
 	<body>
 		<h1>재난정보서비스 테스트</h1>
-		<p>알림표시 권한을 허용 후 버튼을 클릭해주세요. <br />5초 후 알림이 갑니다.</p>
-		<button class="send">푸시알림 보내기</button>
-		<button class="request">Request permission</button>
-		<button class="check">Check the status</button>
-		<p class="status"></p>
-		<script>
-			let permission = Notification.permission;
-			if (permission === 'default') {
-				Notification.requestPermission();
-			} else if (permission === 'denied') {
-				alert('알림표시 권한이 허용되지 않았습니다.');
-			} else {
-				showNotification()
-			}
 
-			const sendBtn = document.querySelector('.send');
-			const requestBtn = document.querySelector('.request');
-			const checkBtn = document.querySelector('.check');
-
-			sendBtn.addEventListener('click', showNotificationLater);
-			requestBtn.addEventListener('click', () => Notification.requestPermission());
-			checkBtn.addEventListener('click', checkStatus);
-
-			function checkStatus() {
-				const permissionStatus = Notification.permission;
-				document.querySelector('.status').innerHTML = permissionStatus;
-			}
-
-			function showNotificationLater() {
-					setTimeout(showNotification, 3000);
-			}
-
-			function showNotification() {
-				const title = '재난정보서비스';
-				const icon = './images/icon.png';
-				const badge = 'https://i.imgur.com/9QFB20F.png';
-				const image = './images/image.svg';
-				const body =
-					'푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요. 푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요. 푸시알림 테스트입니다. 테스트를 위한 지진이 발생했습니다. 지진정보를 확인해주세요.';
-
-        const notification = new Notification(title, { body, icon, image, vibrate: true });
-        notification.onclick = e => {
-          notification.close();
-          window.location.href = './service.html';
-				};
-      }
-		</script>
+    <script src="https://cdn.flarelane.com/WebSDK.js"></script>
+    <script>
+        FlareLane.initialize({ projectId: "8eb07c79-7509-4e7e-badc-e7bb9ff8f178" });
+    </script>
 	</body>
 </html>
